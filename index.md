@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ""
+title: OASIUM | Immersive Social World
 ---
 
 <div class="cover-shell">
