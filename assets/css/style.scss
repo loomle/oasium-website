@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 :root {
-  --oasium-bg: url("{{ '/assets/images/background.svg' | relative_url }}");
+  --oasium-bg: url({{ '/assets/images/background.svg' | relative_url }});
 }
 
 .page-header {
