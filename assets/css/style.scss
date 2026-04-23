@@ -28,7 +28,7 @@ body {
 .cover-shell {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: #000;
 }
@@ -37,4 +37,8 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.site-footer {
+  display: none;
 }
