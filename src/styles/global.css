@@ -14,7 +14,7 @@
   --poster-width: calc(2560px * var(--poster-scale));
   --poster-height: calc(1440px * var(--poster-scale));
   --poster-footer-gap: 60px;
-  --drawer-nav-gap: 54px;
+  --drawer-nav-gap: 45px;
   font-family: 'Mohave', 'Arial Narrow', Arial, sans-serif;
   background: var(--background);
 }
@@ -279,7 +279,7 @@ body.drawer-open .drawer-scrim {
   position: relative;
   display: block;
   width: fit-content;
-  padding-bottom: 9px;
+  padding-bottom: 7px;
   font-size: clamp(41.4px, 2.025vw, 86.4px);
   font-weight: 600;
   line-height: 0.95;
