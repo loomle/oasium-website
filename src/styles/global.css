@@ -13,7 +13,8 @@
   --poster-scale: 0.125;
   --poster-width: calc(2560px * var(--poster-scale));
   --poster-height: calc(1440px * var(--poster-scale));
-  --footer-height: max(190px, calc(320px * var(--poster-scale)));
+  --poster-footer-gap: 100px;
+  --drawer-nav-gap: 100px;
   font-family: 'Mohave', 'Arial Narrow', Arial, sans-serif;
   background: var(--background);
 }
@@ -115,8 +116,8 @@ a {
 .hero-footer {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  min-height: var(--footer-height);
+  align-items: start;
+  padding-top: var(--poster-footer-gap);
   gap: max(20px, calc(90px * var(--poster-scale)));
 }
 
@@ -145,10 +146,13 @@ a {
 
 .platforms {
   display: grid;
-  grid-template-columns: repeat(6, auto);
-  align-items: center;
+  grid-template-columns: repeat(6, max-content);
+  width: max-content;
+  align-items: start;
   justify-content: end;
   justify-self: end;
+  align-self: start;
+  margin-right: 0;
   gap: max(8px, calc(14px * var(--poster-scale)));
 }
 
@@ -216,7 +220,7 @@ a {
   top: 0;
   right: 0;
   display: flex;
-  width: clamp(390px, 20.8vw, 920px);
+  width: clamp(520px, 24vw, 1050px);
   height: 100dvh;
   padding: clamp(44px, 5.2vh, 110px) clamp(44px, 3.5vw, 150px) clamp(38px, 4.3vh, 90px);
   flex-direction: column;
@@ -258,18 +262,32 @@ body.drawer-open .drawer-scrim {
   display: flex;
   margin-top: clamp(50px, 6.4vh, 134px);
   flex-direction: column;
-  gap: clamp(36px, 5.5vh, 116px);
+  gap: var(--drawer-nav-gap);
 }
 
 .drawer-nav a {
+  position: relative;
+  display: block;
   width: fit-content;
+  padding-bottom: 23px;
   font-size: clamp(46px, 2.25vw, 96px);
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: 0.025em;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color 150ms ease;
+}
+
+.drawer-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  content: '';
+  background: #43b860;
 }
 
 .drawer-nav a:hover {
@@ -329,7 +347,7 @@ body.drawer-open .drawer-scrim {
   .hero-footer {
     grid-template-columns: 1fr;
     justify-items: center;
-    padding-top: 28px;
+    padding-top: var(--poster-footer-gap);
     gap: 24px;
   }
 
