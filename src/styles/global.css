@@ -110,6 +110,7 @@ a {
   display: block;
   width: var(--poster-width);
   height: var(--poster-height);
+  border-bottom: 1px solid #43b860;
   object-fit: cover;
 }
 
@@ -268,7 +269,7 @@ body.drawer-open .drawer-scrim {
   position: relative;
   display: block;
   width: fit-content;
-  padding-bottom: 17px;
+  padding-bottom: 11px;
   font-size: clamp(46px, 2.25vw, 96px);
   font-weight: 600;
   line-height: 0.95;
@@ -284,7 +285,7 @@ body.drawer-open .drawer-scrim {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 2px;
+  height: 1px;
   content: '';
   background: #43b860;
 }
