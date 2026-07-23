@@ -64,15 +64,23 @@ const platformLogos = [
         </a>
 
         <div class="platforms" aria-label="Supported stores and VR platforms">
-          {platformLogos.map((logo, index) => (
-            index === 0 ? (
-              <a href={site.links.wishlist} target="_blank" rel="noreferrer" aria-label="Wishlist on Steam">
-                <img src={logo.src} alt={logo.alt} loading="lazy" />
-              </a>
-            ) : (
+          <div class="platform-row platform-row-top">
+            {platformLogos.slice(0, 2).map((logo, index) => (
+              index === 0 ? (
+                <a href={site.links.wishlist} target="_blank" rel="noreferrer" aria-label="Wishlist on Steam">
+                  <img src={logo.src} alt={logo.alt} loading="lazy" />
+                </a>
+              ) : (
+                <span><img src={logo.src} alt={logo.alt} loading="lazy" /></span>
+              )
+            ))}
+          </div>
+
+          <div class="platform-row platform-row-bottom">
+            {platformLogos.slice(2).map((logo) => (
               <span><img src={logo.src} alt={logo.alt} loading="lazy" /></span>
-            )
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -158,4 +166,3 @@ const platformLogos = [
     });
   </script>
 </BaseLayout>
-
