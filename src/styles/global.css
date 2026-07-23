@@ -171,23 +171,23 @@ a {
 }
 
 .platform-row-top > :nth-child(1) {
-  width: max(35px, calc(80px * var(--poster-scale)));
+  width: max(28px, calc(64px * var(--poster-scale)));
 }
 
 .platform-row-top > :nth-child(2) {
-  width: max(52px, calc(128px * var(--poster-scale)));
+  width: max(41.6px, calc(102.4px * var(--poster-scale)));
 }
 
 .platform-row-bottom > :nth-child(1) {
-  width: max(46px, calc(112px * var(--poster-scale)));
+  width: max(36.8px, calc(89.6px * var(--poster-scale)));
 }
 
 .platform-row-bottom > :nth-child(2) {
-  width: max(46px, calc(110px * var(--poster-scale)));
+  width: max(36.8px, calc(88px * var(--poster-scale)));
 }
 
 .platform-row-bottom > :nth-child(3) {
-  width: max(31px, calc(69px * var(--poster-scale)));
+  width: max(24.8px, calc(55.2px * var(--poster-scale)));
 }
 
 .brand:focus-visible,
