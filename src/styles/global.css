@@ -14,7 +14,7 @@
   --poster-width: calc(2560px * var(--poster-scale));
   --poster-height: calc(1440px * var(--poster-scale));
   --poster-footer-gap: 60px;
-  --drawer-nav-gap: 100px;
+  --drawer-nav-gap: 60px;
   font-family: 'Mohave', 'Arial Narrow', Arial, sans-serif;
   background: var(--background);
 }
@@ -294,9 +294,10 @@ body.drawer-open .drawer-scrim {
 }
 
 .drawer-wishlist {
-  width: 100%;
-  max-width: 500px;
+  width: 70%;
+  max-width: 350px;
   margin-top: clamp(58px, 8.2vh, 172px);
+  align-self: flex-start;
 }
 
 .copyright {
