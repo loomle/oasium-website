@@ -14,7 +14,7 @@
   --poster-width: calc(2560px * var(--poster-scale));
   --poster-height: calc(1440px * var(--poster-scale));
   --poster-footer-gap: 60px;
-  --drawer-nav-gap: 60px;
+  --drawer-nav-gap: 54px;
   font-family: 'Mohave', 'Arial Narrow', Arial, sans-serif;
   background: var(--background);
 }
@@ -78,7 +78,7 @@ a {
 .brand {
   left: clamp(28px, 2.8vw, 120px);
   display: block;
-  width: clamp(68px, 3.45vw, 150px);
+  width: clamp(54.4px, 2.76vw, 120px);
 }
 
 .brand img,
@@ -116,10 +116,10 @@ a {
 
 .hero-footer {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto auto 1fr;
   align-items: start;
   padding-top: var(--poster-footer-gap);
-  gap: max(20px, calc(90px * var(--poster-scale)));
+  column-gap: max(20px, calc(50px * var(--poster-scale)));
 }
 
 .release {
@@ -133,6 +133,11 @@ a {
   text-transform: uppercase;
 }
 
+.release span,
+.release time {
+  white-space: nowrap;
+}
+
 .wishlist {
   display: block;
   width: max(180px, calc(500px * var(--poster-scale)));
@@ -143,6 +148,11 @@ a {
 .wishlist:hover {
   filter: brightness(1.08);
   transform: translateY(-2px);
+}
+
+.hero-footer > .wishlist {
+  position: relative;
+  left: calc(53px * var(--poster-scale));
 }
 
 .platforms {
@@ -269,8 +279,8 @@ body.drawer-open .drawer-scrim {
   position: relative;
   display: block;
   width: fit-content;
-  padding-bottom: 11px;
-  font-size: clamp(46px, 2.25vw, 96px);
+  padding-bottom: 9px;
+  font-size: clamp(41.4px, 2.025vw, 86.4px);
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: 0.025em;
@@ -315,6 +325,17 @@ body.drawer-open .drawer-scrim {
   }
 }
 
+@media (min-width: 720px) and (min-height: 580px) and (max-width: 1099px),
+  (min-width: 720px) and (min-height: 580px) and (max-height: 759px) {
+  .hero-footer {
+    column-gap: 10px;
+  }
+
+  .hero-footer > .wishlist {
+    width: 120px;
+  }
+}
+
 @media (min-width: 1100px) and (min-height: 760px) {
   :root {
     --poster-scale: 0.375;
@@ -350,6 +371,10 @@ body.drawer-open .drawer-scrim {
     justify-items: center;
     padding-top: var(--poster-footer-gap);
     gap: 24px;
+  }
+
+  .hero-footer > .wishlist {
+    left: 0;
   }
 
   .release {

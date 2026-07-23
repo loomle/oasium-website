@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../config/site';
 
 const drawerLinks = [
-  { label: 'Watch Trailer', href: site.links.trailer },
-  { label: 'Social Media', href: site.links.social },
-  { label: 'News', href: site.links.news },
-  { label: 'Community', href: site.links.community },
+  { label: 'Home', href: '/', external: false },
+  { label: 'Store', href: site.links.store, external: true },
+  { label: 'Trailer', href: site.links.trailer, external: true },
+  { label: 'News', href: site.links.news, external: true },
+  { label: 'Community', href: site.links.community, external: true },
 ];
 
 const platformLogos = [
@@ -63,6 +64,16 @@ const platformLogos = [
           <img src="/Whishlist_Button.svg" alt="" width="500" height="160" />
         </a>
 
+        <a
+          class="wishlist trailer-button"
+          href={site.links.trailer}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Watch the OASIUM trailer"
+        >
+          <img src="/Trailer_Button.svg" alt="" width="500" height="160" />
+        </a>
+
         <div class="platforms" aria-label="Supported stores and VR platforms">
           <div class="platform-row platform-row-top">
             {platformLogos.slice(0, 2).map((logo, index) => (
@@ -98,7 +109,11 @@ const platformLogos = [
 
     <nav class="drawer-nav" aria-label="OASIUM links">
       {drawerLinks.map((link) => (
-        <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+        <a
+          href={link.href}
+          target={link.external ? '_blank' : undefined}
+          rel={link.external ? 'noreferrer' : undefined}
+        >{link.label}</a>
       ))}
     </nav>
 

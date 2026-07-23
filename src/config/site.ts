@@ -10,6 +10,7 @@ export const site = {
     datetime: '2026-11',
   },
   links: {
+    store: steamBase,
     wishlist: `${steamBase}?utm_source=official_site&utm_medium=web&utm_campaign=prelaunch&utm_content=hero`,
     navigationWishlist: `${steamBase}?utm_source=official_site&utm_medium=web&utm_campaign=prelaunch&utm_content=navigation`,
     trailer: steamBase,
@@ -18,4 +19,3 @@ export const site = {
     community: 'https://steamcommunity.com/app/4579430/discussions/',
   },
 } as const;
-
