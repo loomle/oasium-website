@@ -279,7 +279,7 @@ body.drawer-open .drawer-scrim {
   position: relative;
   display: block;
   width: fit-content;
-  padding-bottom: 7px;
+  padding-bottom: 6px;
   font-size: clamp(41.4px, 2.025vw, 86.4px);
   font-weight: 600;
   line-height: 0.95;
@@ -307,7 +307,7 @@ body.drawer-open .drawer-scrim {
 .drawer-wishlist {
   width: 70%;
   max-width: 350px;
-  margin-top: clamp(58px, 8.2vh, 172px);
+  margin-top: 45px;
   align-self: flex-start;
 }
 
