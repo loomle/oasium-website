@@ -152,7 +152,7 @@ a {
   align-self: start;
   margin-right: 0;
   flex-direction: column;
-  row-gap: max(16px, calc(28px * var(--poster-scale)));
+  row-gap: 10px;
 }
 
 .platform-row {
