@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+import { site } from '../config/site';
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const videoGameSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'OASIUM',
+  description: site.description,
+  url: canonical.toString(),
+  gamePlatform: ['PC', 'PCVR'],
+  operatingSystem: 'Windows',
+  applicationCategory: 'Game',
+  author: {
+    '@type': 'Organization',
+    name: 'OASIUM Studio',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0D1B17" />
+    <meta name="description" content={site.description} />
+    <link rel="canonical" href={canonical} />
+    <title>{site.title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/OASIUM_WebKV.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(videoGameSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+

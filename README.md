@@ -1,21 +1,32 @@
-# Oasium Website
+# OASIUM Website
 
-Single-page homepage for Oasium, built with GitHub Pages and the GitHub-supported Cayman Jekyll theme.
+Single-page official website for OASIUM, built with Astro and TypeScript.
 
-## Editing
+## Local development
 
-- Homepage copy lives in `index.md`.
-- Site title and description live in `_config.yml`.
-- The temporary background is `assets/images/background.svg`.
+```bash
+pnpm install
+pnpm dev
+```
 
-To use the final background image, either replace `assets/images/background.svg` with the same filename, or place a new image under `assets/images/` and update `--oasium-bg` in `assets/css/style.scss`.
+Create a production build with:
+
+```bash
+pnpm build
+```
+
+## Project structure
+
+- `src/pages/index.astro` — the single-page website and drawer interaction.
+- `src/config/site.ts` — release copy and external links.
+- `src/styles/global.css` — fixed poster scale tiers and responsive presentation.
+- `webimg/` — web-ready official image assets and the Pages `CNAME` file.
+- `fonts/` — local Mohave font files.
+
+The 2560×1440 key visual changes only between the fixed scale tiers defined in
+`src/styles/global.css`; it does not scale continuously.
 
 ## Publishing
 
-1. Push this repository to GitHub.
-2. Open the repository settings on GitHub.
-3. Go to **Pages**.
-4. Set the source to the default branch and root folder.
-5. Save and wait for GitHub Pages to build the site.
-
-No local Ruby or Node setup is required for this repository.
+Pushes to `main` are built and deployed to GitHub Pages by
+`.github/workflows/deploy.yml`. The custom domain remains `oasium.io`.

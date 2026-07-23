@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const drawerLinks = [
+  { label: 'Watch Trailer', href: site.links.trailer },
+  { label: 'Social Media', href: site.links.social },
+  { label: 'News', href: site.links.news },
+  { label: 'Community', href: site.links.community },
+];
+
+const platformLogos = [
+  { src: '/Steam_White_Logo.svg', alt: 'Steam' },
+  { src: '/VR_Support_Logo.svg', alt: 'VR supported' },
+  { src: '/Meta_Quest_Logo.svg', alt: 'Meta Quest' },
+  { src: '/ViveIndex_Logo.svg', alt: 'Vive and Valve Index' },
+  { src: '/Pico_Website_Logo.svg', alt: 'Pico' },
+];
+---
+
+<BaseLayout>
+  <main class="page" data-page-content>
+    <a class="brand" href="/" aria-label="OASIUM home">
+      <img src="/OASIUM_Logo.svg" alt="" width="150" height="80" />
+    </a>
+
+    <button
+      class="menu-trigger"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-drawer"
+      aria-expanded="false"
+      data-drawer-open
+    >
+      <img src="/Sidebar_icon.svg" alt="" width="75" height="62" />
+    </button>
+
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title" class="visually-hidden">OASIUM — Immersive Social World</h1>
+
+      <img
+        class="key-visual"
+        src="/OASIUM_WebKV.png"
+        alt="OASIUM worlds collage featuring a European city, a desert hoverbike, an avatar hub, a neon city, and forest exploration"
+        width="2560"
+        height="1440"
+        fetchpriority="high"
+      />
+
+      <div class="hero-footer">
+        <p class="release">
+          <span>{site.release.label}</span>
+          <time datetime={site.release.datetime}>{site.release.date}</time>
+        </p>
+
+        <a
+          class="wishlist"
+          href={site.links.wishlist}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Add OASIUM to your Steam wishlist"
+        >
+          <img src="/Whishlist_Button.svg" alt="" width="500" height="160" />
+        </a>
+
+        <div class="platforms" aria-label="Supported stores and VR platforms">
+          {platformLogos.map((logo, index) => (
+            index === 0 ? (
+              <a href={site.links.wishlist} target="_blank" rel="noreferrer" aria-label="Wishlist on Steam">
+                <img src={logo.src} alt={logo.alt} loading="lazy" />
+              </a>
+            ) : (
+              <span><img src={logo.src} alt={logo.alt} loading="lazy" /></span>
+            )
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="drawer-scrim" type="button" aria-label="Close menu" data-drawer-close></button>
+
+  <aside id="site-drawer" class="drawer" aria-label="Site navigation" aria-hidden="true">
+    <header class="drawer-header">
+      <img class="drawer-logo" src="/Oasium_Words_Logo.svg" alt="OASIUM" width="361" height="72" />
+      <button class="drawer-close" type="button" aria-label="Close menu" data-drawer-close>
+        <img src="/Back_Icon.svg" alt="" width="56" height="91" />
+      </button>
+    </header>
+
+    <nav class="drawer-nav" aria-label="OASIUM links">
+      {drawerLinks.map((link) => (
+        <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+      ))}
+    </nav>
+
+    <a
+      class="wishlist drawer-wishlist"
+      href={site.links.navigationWishlist}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Add OASIUM to your Steam wishlist"
+    >
+      <img src="/Whishlist_Button.svg" alt="" width="500" height="160" />
+    </a>
+
+    <p class="copyright">Copyright © 2026 OASIUM Studio</p>
+  </aside>
+
+  <script>
+    const drawer = document.querySelector<HTMLElement>('#site-drawer');
+    const page = document.querySelector<HTMLElement>('[data-page-content]');
+    const openButton = document.querySelector<HTMLButtonElement>('[data-drawer-open]');
+    const closeButtons = document.querySelectorAll<HTMLButtonElement>('[data-drawer-close]');
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    function setDrawer(open: boolean) {
+      if (!drawer || !openButton) return;
+
+      drawer.dataset.open = String(open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      openButton.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('drawer-open', open);
+      page?.toggleAttribute('inert', open);
+
+      if (open) {
+        drawer.querySelector<HTMLElement>(focusableSelector)?.focus();
+      } else {
+        openButton.focus();
+      }
+    }
+
+    openButton?.addEventListener('click', () => setDrawer(true));
+    closeButtons.forEach((button) => button.addEventListener('click', () => setDrawer(false)));
+
+    document.addEventListener('keydown', (event) => {
+      if (drawer?.dataset.open !== 'true') return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setDrawer(false);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(drawer.querySelectorAll<HTMLElement>(focusableSelector));
+      const first = focusable.at(0);
+      const last = focusable.at(-1);
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  </script>
+</BaseLayout>
+
