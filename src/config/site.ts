@@ -13,7 +13,7 @@ export const site = {
     store: steamBase,
     wishlist: `${steamBase}?utm_source=official_site&utm_medium=web&utm_campaign=prelaunch&utm_content=hero`,
     navigationWishlist: `${steamBase}?utm_source=official_site&utm_medium=web&utm_campaign=prelaunch&utm_content=navigation`,
-    trailer: steamBase,
+    trailer: 'https://www.youtube.com/watch?v=Bn933-JsojA',
     social: 'https://steamcommunity.com/app/4579430',
     news: 'https://store.steampowered.com/news/app/4579430',
     community: 'https://steamcommunity.com/app/4579430/discussions/',
