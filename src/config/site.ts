@@ -5,7 +5,7 @@ export const site = {
   description:
     'OASIUM is a free-to-play immersive social world for PCVR and PC. Explore new worlds and wishlist OASIUM on Steam.',
   release: {
-    label: 'Coming Soon',
+    label: 'Coming',
     date: 'November, 2026',
     datetime: '2026-11',
   },
