@@ -39,14 +39,17 @@ const platformLogos = [
     <section class="hero" aria-labelledby="page-title">
       <h1 id="page-title" class="visually-hidden">OASIUM — Immersive Social World</h1>
 
-      <img
-        class="key-visual"
-        src="/OASIUM_WebKV.webp"
-        alt="OASIUM worlds collage featuring a European city, a desert hoverbike, an avatar hub, a neon city, and forest exploration"
-        width="2560"
-        height="1440"
-        fetchpriority="high"
-      />
+      <picture>
+        <source media="(max-width: 719px)" srcset="/OASIUM_MobileWebKV.webp" />
+        <img
+          class="key-visual"
+          src="/OASIUM_WebKV.webp"
+          alt="OASIUM worlds collage featuring a European city, a desert hoverbike, an avatar hub, a neon city, and forest exploration"
+          width="2560"
+          height="1440"
+          fetchpriority="high"
+        />
+      </picture>
 
       <div class="hero-footer">
         <p class="release">
